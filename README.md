@@ -22,7 +22,7 @@ pod 'NarratiiveSDK'
 
 ## Author
 
-git, davidforest@gmail.com
+git, david@narratiive.com
 
 ## License
 

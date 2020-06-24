@@ -1,30 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JLS-WF-Z82">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--First-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="NarratiiveSDK_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="FirstViewController" customModule="NarratiiveSDK_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="YFp-Y6-vDo">
+                                <rect key="frame" x="73" y="338.66666666666669" width="229" height="135"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Narratiive Analytics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41a-Rv-cRc">
+                                        <rect key="frame" x="0.0" y="0.0" width="229" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/first-page" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZF-mF-PMT">
+                                        <rect key="frame" x="61.333333333333336" y="105" width="106.33333333333331" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YFp-Y6-vDo" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="BCV-3w-qmG"/>
+                            <constraint firstItem="YFp-Y6-vDo" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="xkV-xz-58U"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="First" image="arrowtriangle.down" catalog="system" id="P6Y-pc-Yld"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="324" y="-137"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yBe-i1-yUt">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="JLS-WF-Z82" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="51R-pW-OaI">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="JIh-Rj-pXf"/>
+                        <segue destination="ntF-WH-XjC" kind="relationship" relationship="viewControllers" id="VbG-n0-M1O"/>
+                        <segue destination="N8C-vz-sZE" kind="relationship" relationship="viewControllers" id="c10-9K-WTl"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oLg-RN-oba" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-865" y="182"/>
+        </scene>
+        <!--Second-->
+        <scene sceneID="hme-3J-u5A">
+            <objects>
+                <viewController id="ntF-WH-XjC" customClass="SecondViewController" customModule="NarratiiveSDK_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vjw-3L-ZUG"/>
+                        <viewControllerLayoutGuide type="bottom" id="X0N-gs-yy8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UCQ-g1-jWl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="oRh-G5-j4a">
+                                <rect key="frame" x="73" y="338.66666666666669" width="229" height="135"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Narratiive Analytics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eut-QV-NEb">
+                                        <rect key="frame" x="0.0" y="0.0" width="229" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/second-page" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cA-0f-q4E">
+                                        <rect key="frame" x="44" y="105" width="141.33333333333334" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oRh-G5-j4a" firstAttribute="centerX" secondItem="UCQ-g1-jWl" secondAttribute="centerX" id="ZyR-Gy-nv7"/>
+                            <constraint firstItem="oRh-G5-j4a" firstAttribute="centerY" secondItem="UCQ-g1-jWl" secondAttribute="centerY" id="hRo-tn-7Nq"/>
+                            <constraint firstItem="eut-QV-NEb" firstAttribute="centerX" secondItem="UCQ-g1-jWl" secondAttribute="centerX" id="kC2-Hw-Fgh"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Second" image="heart" catalog="system" id="e7J-0O-6vD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="atr-5p-KiZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="324" y="559"/>
+        </scene>
+        <!--Third-->
+        <scene sceneID="Nvu-cH-MzR">
+            <objects>
+                <viewController id="N8C-vz-sZE" customClass="ThirdViewController" customModule="NarratiiveSDK_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RjL-5r-oH2"/>
+                        <viewControllerLayoutGuide type="bottom" id="8xV-yt-umE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4z1-QO-C6p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="5ov-Sa-4Ji">
+                                <rect key="frame" x="73" y="338.66666666666669" width="229" height="135"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Narratiive Analytics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIg-Py-Uuk">
+                                        <rect key="frame" x="0.0" y="0.0" width="229" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/third-page" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrF-QP-48R">
+                                        <rect key="frame" x="58" y="105" width="113" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5ov-Sa-4Ji" firstAttribute="centerY" secondItem="4z1-QO-C6p" secondAttribute="centerY" id="G9H-cN-ZIo"/>
+                            <constraint firstItem="5ov-Sa-4Ji" firstAttribute="centerX" secondItem="4z1-QO-C6p" secondAttribute="centerX" id="IjU-KJ-aEl"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Third" image="square" catalog="system" id="e8i-Q2-hFb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ULz-6H-Oab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1423" y="259"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrowtriangle.down" catalog="system" width="128" height="124"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="square" catalog="system" width="128" height="114"/>
+    </resources>
 </document>

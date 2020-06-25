@@ -8,6 +8,7 @@ public final class NarratiiveSDK {
     var hostKey: String?
     var idfa: String?
     var token: String?
+    var isSending: Bool = false
     public var debug: Bool = false
     
     private func log(_ msg: String) {
@@ -92,6 +93,10 @@ public final class NarratiiveSDK {
         postJson(jsonDict: json, urlString: "https://collector.effectivemeasure.net/app/tokens") {
             data, error, success in
             
+            if let error = error {
+                self.log("\t- Request failed. Error : \(error)")
+            }
+            
             if let data = data, let success = success {
                 if success && data["token"] != nil {
                     let newToken = data["token"] as? String
@@ -99,6 +104,8 @@ public final class NarratiiveSDK {
                     self.log("\t- Token created: \(String(describing: newToken))")
                     self.saveToken()
                     completion()
+                } else {
+                    self.log("\t- Failed creating token: \(String(describing: error))")
                 }
             }
         }
@@ -118,6 +125,12 @@ public final class NarratiiveSDK {
         log("Sending screen event with '\(path ?? "")'.")
         
         guard token != nil, host != nil, hostKey != nil else {
+            log("\t- Failed. Missing token, host or hostKey")
+            return
+        }
+        
+        guard !isSending else {
+            log("\t- Failed. Pending request exists")
             return
         }
         
@@ -128,16 +141,25 @@ public final class NarratiiveSDK {
             "path": path
         ]
         
+        isSending = true
         postJson(jsonDict: json, urlString: "https://collector.effectivemeasure.net/app/hits") {
             data, error, success in
+            
+            if let error = error {
+                self.log("\t- Request failed. Error : \(error)")
+            }
             
             if let data = data, let success = success {
                 if success && data["token"] != nil {
                     self.token = data["token"] as? String
-                    self.log("\t- Request succeeded. New token received: \(self.token!)")
+                    self.log("\t- Event sent. New token received: \(self.token!)")
                     self.saveToken()
+                } else {
+                    let error = data["err"] as? String
+                    self.log("\t- Event NOT sent. Error: \(error ?? "Unknown")")
                 }
             }
+            self.isSending = false
         }
     }
       
@@ -147,7 +169,6 @@ public final class NarratiiveSDK {
     private static var sharedNarratiiveSDK: NarratiiveSDK = {
         let sdk = NarratiiveSDK()
         // More config here if required
-        
         return sdk
     }()
     
@@ -166,7 +187,7 @@ public final class NarratiiveSDK {
     }
     
     public func send(screenName: String) {
-        
+        // add in progress blocker.
         
         if token != nil {
             registerHit(path: screenName)

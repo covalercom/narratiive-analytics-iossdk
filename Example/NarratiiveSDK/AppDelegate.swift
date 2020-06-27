@@ -21,7 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let sdk = NarratiiveSDK.sharedInstance() else {
           assert(false, "Narratiive SDK not configured correctly")
         }
-        sdk.debug = true
+        
+        // Optional, show debug information in output
+        // Remove before app release.
+        sdk.debugMode = true
         sdk.setup(withHost: "m-example.org", andHostKey: "9SN/cN6oEv9QO2WCE7sb2D+BLmM=")
         
         return true

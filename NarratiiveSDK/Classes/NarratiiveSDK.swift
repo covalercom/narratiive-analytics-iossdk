@@ -1,22 +1,22 @@
 import AdSupport
 
-public final class NarratiiveSDK {
+@objcMembers public class NarratiiveSDK: NSObject {
     static let NarratiiveSDKToken = "NarratiiveSDKToken"
-    
     
     var host: String?
     var hostKey: String?
     var idfa: String?
     var token: String?
     var isSending: Bool = false
-    public var debug: Bool = false
+    
+    public var debugMode: Bool = false
     
     private func log(_ msg: String) {
-        if debug {
+        if debugMode {
             print(msg)
         }
     }
- 
+    
     private func loadIDFA() {
         log("Loading IDFA from device...")
         if ASIdentifierManager.shared().isAdvertisingTrackingEnabled {
@@ -39,16 +39,16 @@ public final class NarratiiveSDK {
         }
     }
     
-    private func postJson(jsonDict: [String: String?], urlString: String, completion: @escaping ([String: Any]?, Error?, Bool?) -> Void) {
+    private func postJson(jsonDict: [String: Any?], urlString: String, completion: @escaping ([String: Any]?, Error?, Bool?) -> Void) {
         log("Making a POST request to \(urlString)...")
         
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
-                
+        
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-                
+        
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: jsonDict, options: [])
             
@@ -89,7 +89,7 @@ public final class NarratiiveSDK {
             "hostKey": hostKey,
             "idfa": idfa
         ]
-                
+        
         postJson(jsonDict: json, urlString: "https://collector.effectivemeasure.net/app/tokens") {
             data, error, success in
             
@@ -162,11 +162,8 @@ public final class NarratiiveSDK {
             self.isSending = false
         }
     }
-      
-    private init() {
-    }
     
-    private static var sharedNarratiiveSDK: NarratiiveSDK = {
+    static var sharedNarratiiveSDK: NarratiiveSDK = {
         let sdk = NarratiiveSDK()
         // More config here if required
         return sdk
@@ -187,8 +184,6 @@ public final class NarratiiveSDK {
     }
     
     public func send(screenName: String) {
-        // add in progress blocker.
-        
         if token != nil {
             registerHit(path: screenName)
         } else {

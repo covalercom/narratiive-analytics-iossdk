@@ -1,4 +1,4 @@
-# NarratiiveSDK
+# Narratiive IOS SDK
 
 [![CI Status](https://img.shields.io/travis/git/NarratiiveSDK.svg?style=flat)](https://travis-ci.org/git/NarratiiveSDK)
 [![Version](https://img.shields.io/cocoapods/v/NarratiiveSDK.svg?style=flat)](https://cocoapods.org/pods/NarratiiveSDK)
@@ -33,24 +33,64 @@ Now that you have the configuration file for your project, you're ready to begin
 
 To do so, import the NarratiiveSDK libruary and override the `didFinishLaunchingWithOptions` method to configure NarratiiveSDK:
 
-    guard let sdk = NarratiiveSDK.sharedInstance() else {
-      assert(false, "Narratiive SDK not configured correctly")
-    }
-
-    // Optional, out put debug information when `true`
-    // Remove before app release.
-    sdk.debug = true
+**Swift Code**:
+    
+    // AppDelegate.swift
+    
+    import NarratiiveSDK
+    ...
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
         
-    sdk.setup(withHost: "YOUR_HOSTNAME", andHostKey: "YOUR_HOSTKEY")
+        guard let sdk = NarratiiveSDK.sharedInstance() else {
+          assert(false, "Narratiive SDK not configured correctly")
+        }
+        
+        // Optional, show debug information in output
+        // Remove before app release.
+        sdk.debugMode = true
+        sdk.setup(withHost: "YOUR_HOSTNAME", andHostKey: "YOUR_HOSTKEY")
+        
+        return true
+    }
+         
+ Example: [AppDelegate.swift](./Example/NarratiiveSDK/AppDelegate.swift)
+ 
+ 
+**Objective C**:
+    
+    // AppDelegate.m
+    
+    #import "NarratiiveSDK-Swift.h"
+    ...
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        // Override point for customization after application launch.
+       
+        NarratiiveSDK *sdk = [NarratiiveSDK sharedInstance];
+        [sdk setupWithHost:@"YOUR_HOSTNAME" andHostKey:@"YOUR_HOSTKEY"];
+
+        // Optional, show debug information in output
+        // Remove before app release.
+        sdk.debugMode = YES;
+     
+        return YES;
+    }
+    
+    **Note**: You will need to create a bridging header for this Swift Pod if you don't have one yet in your Objective C project.
+
  
 
-Example: [AppDelegate.swift](./Example/NarratiiveSDK/AppDelegate.swift)
- 
-
-## ADD screen tracking
+## Add screen tracking
 
 Here you’ll send a named screen view to NarratiiveSDK whenever the user opens or changes screens on your app. Open a View Controller that you'd like to track, or if this is a new application, open the default view controller. Your code should do the following:
 
+**Swift Code**:
+    
+    // FirstViewController.swift    
+    import NarratiiveSDK
+    ...
+    
     override func viewWillAppear(_ animated: Bool) {
         if let inst = NarratiiveSDK.sharedInstance() {
             inst.send(screenName: "/first-page")
@@ -58,9 +98,21 @@ Here you’ll send a named screen view to NarratiiveSDK whenever the user opens 
     }
 
 
-Example: [FirstViewControler.swfit](./Example/NarratiiveSDK/FirstViewControler.swfit)
+Example: [FirstViewControler.swfit](./Example/NarratiiveSDK/FirstViewController.swift)
 
-The `screenName` is used to identify the screen view. It should follows a URL path format and be in lowercases.
+**Objective C**:
+    
+    // FirstViewController.m
+    #import "NarratiiveSDK-Swift.h"
+    ...
+    
+    - (void) viewWillAppear:(BOOL)animated {
+        NarratiiveSDK *sdk = [NarratiiveSDK sharedInstance];
+        [sdk sendWithScreenName:@"/first-page"];
+    }
+
+
+**Note**: The `screenName` is used to identify the screen view. It should follows a URL path format and be in lowercases.
 
 
 ## Author

@@ -117,7 +117,7 @@ Example: [FirstViewControler.swfit](./Example/NarratiiveSDK/FirstViewController.
 
 ## Author
 
-git, david@narratiive.com
+git, engineering@narratiive.com
 
 ## License
 

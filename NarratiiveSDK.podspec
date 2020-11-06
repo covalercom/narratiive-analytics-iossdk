@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NarratiiveSDK'
-  s.version          = '0.1.1'
+  s.version          = '0.2.0'
   s.summary          = 'Narratiive Data Analytics IOS SDK.'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ This is the IOS SDK for Narratiive App Trafic API.
   s.source           = { :git => 'https://github.com/covalercom/narratiive-analytics-iossdk.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'NarratiiveSDK/Classes/**/*'
   

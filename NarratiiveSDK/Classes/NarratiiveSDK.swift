@@ -13,6 +13,7 @@ import WebKit
     var isSending: Bool = false
     
     public var debugMode: Bool = false
+    public var useIDFA: Bool = false
     
     private func log(_ msg: String) {
         if debugMode {
@@ -164,7 +165,8 @@ import WebKit
             "host": host,
             "hostKey": hostKey,
             "token": token,
-            "path": path
+            "path": path,
+            "agent": "ios"
         ]
         
         isSending = true
@@ -205,7 +207,10 @@ import WebKit
         host = withHost
         hostKey = andHostKey
         
-        loadIDFA()
+        if useIDFA {
+            loadIDFA()
+        }
+
         loadToken()
     }
     

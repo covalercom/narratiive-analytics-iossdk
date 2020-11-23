@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NarratiiveSDK'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'Narratiive Data Analytics IOS SDK.'
 
 # This description is used to generate tags and improve search results.
